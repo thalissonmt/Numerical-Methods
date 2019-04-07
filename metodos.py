@@ -293,16 +293,260 @@ def interpretarEntrada(linha):
 			y7 = runge_kutta(y0, t0, h, 7, fn, false)
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
 
-	# elif dado[0]=="adam_multon":
+	elif dado[0]=="adam_multon":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Adam Moulton", t0, y0, h)
+
+		if dado[-1]=='2': 
+			y1 = float(dado[2])
+			adam_moulton(y0, y1, t0, h, passos, fn, true)
+		elif dado[-1]=='3':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			adam_moulton_3(y0, y1, y2, t0, h, passos, fn, true)
+		elif dado[-1]=='4':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			adam_moulton_4(y0, y1, y2, y3, t0, h, passos, fn, true)
+		elif dado[-1]=='5':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			adam_moulton_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)
+		elif dado[-1]=='6':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			y5 = float(dado[6])
+			adam_moulton_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)
+		elif dado[-1]=='7':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			y5 = float(dado[6])
+			y6 = float(dado[7])
+			adam_moulton_7(y0, y1, y2, y3, y4, y5, y6, t0, h, passos, fn, true)
+		elif dado[-1]=='8':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			y5 = float(dado[6])
+			y6 = float(dado[7])
+			y7 = float(dado[8])
+			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
 	
-	# elif dado[0]=="adam_multon_by_euler":
+	elif dado[0]=="adam_multon_by_euler":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Adam Moulton por Euler", t0, y0, h)
+
+		if dado[-1]=='2':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			adam_moulton_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			adam_moulton_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			adam_moulton_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			adam_moulton_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			y5 = euler(y0, t0, h, 5, fn, false)
+			adam_moulton_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		elif dado[-1]=='7':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			y5 = euler(y0, t0, h, 5, fn, false)
+			y6 = euler(y0, t0, h, 6, fn, false)
+			adam_moulton_7(y0, y1, y2, y3, y4, y5, y6, t0, h, passos, fn, true)	
+		elif dado[-1]=='8':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			y5 = euler(y0, t0, h, 5, fn, false)
+			y6 = euler(y0, t0, h, 6, fn, false)
+			y7 = euler(y0, t0, h, 7, fn, false)
+			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+
+	elif dado[0]=="adam_multon_by_euler_inverso":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Adam Moulton por Euler Inverso", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			adam_moulton_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			adam_moulton_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			adam_moulton_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			adam_moulton_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			y5 = euler_inverso(y0, t0, h, 5, fn, false)
+			adam_moulton_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		elif dado[-1]=='7':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			y5 = euler_inverso(y0, t0, h, 5, fn, false)
+			y6 = euler_inverso(y0, t0, h, 6, fn, false)
+			adam_moulton_7(y0, y1, y2, y3, y4, y5, y6, t0, h, passos, fn, true)	
+		elif dado[-1]=='8':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			y5 = euler_inverso(y0, t0, h, 5, fn, false)
+			y6 = euler_inverso(y0, t0, h, 6, fn, false)
+			y7 = euler_inverso(y0, t0, h, 7, fn, false)
+			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
 	
-	# elif dado[0]=="adam_multon_by_euler_inverso":
+	elif dado[0]=="adam_multon_by_euler_aprimorado":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Adam Moulton por Euler Aprimorado", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			adam_moulton_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			adam_moulton_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			adam_moulton_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			adam_moulton_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			y5 = euler_aprimorado(y0, t0, h, 5, fn, false)
+			adam_moulton_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		elif dado[-1]=='7':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			y5 = euler_aprimorado(y0, t0, h, 5, fn, false)
+			y6 = euler_aprimorado(y0, t0, h, 6, fn, false)
+			adam_moulton_7(y0, y1, y2, y3, y4, y5, y6, t0, h, passos, fn, true)	
+		elif dado[-1]=='8':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			y5 = euler_aprimorado(y0, t0, h, 5, fn, false)
+			y6 = euler_aprimorado(y0, t0, h, 6, fn, false)
+			y7 = euler_aprimorado(y0, t0, h, 7, fn, false)
+			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
 	
-	# elif dado[0]=="adam_multon_by_euler_aprimorado":
-	
-	# elif dado[0]=="adam_multon_by_runge_kutta":
-	
+	elif dado[0]=="adam_multon_by_runge_kutta":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Adam Moulton por Runge-Kutta", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			adam_moulton_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			adam_moulton_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			adam_moulton_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			adam_moulton_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			y5 = runge_kutta(y0, t0, h, 5, fn, false)
+			adam_moulton_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		elif dado[-1]=='7':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			y5 = runge_kutta(y0, t0, h, 5, fn, false)
+			y6 = runge_kutta(y0, t0, h, 6, fn, false)
+			adam_moulton_7(y0, y1, y2, y3, y4, y5, y6, t0, h, passos, fn, true)	
+		elif dado[-1]=='8':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			y5 = runge_kutta(y0, t0, h, 5, fn, false)
+			y6 = runge_kutta(y0, t0, h, 6, fn, false)
+			y7 = runge_kutta(y0, t0, h, 7, fn, false)
+			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
 	# elif dado[0]=="formula_inversa":
 	
 	# elif dado[0]=="formula_inversa_by_euler":
@@ -523,7 +767,7 @@ def adam_bashforth_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
 		adicionarBarraN()
 	return yn
 
-def adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn):
+def adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 	if flag==true:
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
@@ -545,6 +789,167 @@ def adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn):
 		y5 = y6
 		y6 = y7
 		y7 = yn
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_2(y0,y1,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(1, passos):
+		yn = y1 + h*(((1/2)*func(adam_bashforth_2(y0,y1,t0,h,2,fn,false),t0 + h*2)) + ((1/2)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_3(y0,y1,y2,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(2, passos):
+		yn = y2 + h*(((5/12)*func(adam_bashforth_3(y0,y1,y2,t0,h,3,fn,false),t0 + h*3)) + ((2/3)*func(y2,t0 + h*2)) - ((1/12)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(3, passos):
+		yn = y3 + h*(((3/8)*func(adam_bashforth_4(y0,y1,y2,y3,t0,h,4,fn,false),t0 + h*4)) + ((19/24)*func(y3,t0 + h*3)) - ((5/24)*func(y2,t0 + h*2)) + ((1/24)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(4, passos):
+		yn = y4 + h*(((251/720)*func(adam_bashforth_5(y0,y1,y2,y3,y4,t0,h,5,fn,false),t0 + h*5)) + ((323/360)*func(y4,t0 + h*4)) - ((11/30)*func(y3,t0 + h*3)) + ((53/360)*func(y2,t0 + h*2)) - ((19/720)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+		adicionarSaida(5,y5)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(5, passos):
+		yn = y5 + h*(((95/288)*func(adam_bashforth_6(y0,y1,y2,y3,y4,y5,t0,h,6,fn,false),t0 + h*6)) + ((1427/1440)*func(y5,t0 + h*5)) - ((133/240)*func(y4,t0 + h*4)) + ((241/720)*func(y3,t0 + h*3)) - ((173/1440)*func(y2,t0 + h*2)) + ((3/160)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = y5
+		y5 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+		adicionarSaida(5,y5)
+		adicionarSaida(6,y6)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(6, passos):
+		yn = y6 + h*(((19087/60480)*func(adam_bashforth_7(y0,y1,y2,y3,y4,y5,y6,t0,h,7,fn,false),t0 + h*7)) + ((2713/2520)*func(y6,t0 + h*6)) - ((15487/20160)*func(y5,t0 + h*5)) + ((586/945)*func(y4,t0 + h*4)) - ((6737/20160)*func(y3,t0 + h*3)) + ((263/2520)*func(y2,t0 + h*2)) - ((863/60480)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = y5
+		y5 = y6
+		y6 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def adam_moulton_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+		adicionarSaida(5,y5)
+		adicionarSaida(6,y6)
+		adicionarSaida(7,y6)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(7, passos):
+		yn = y7 + h*(((5257/17280)*func(adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,8,fn,false),t0 + h*8)) + ((139849/120960)*func(y7,t0 + h*7)) - ((4511/4480)*func(y6,t0 + h*6)) + ((123133/120960)*func(y5,t0 + h*5)) - ((88547/120960)*func(y4,t0 + h*4)) + ((1537/4480)*func(y3,t0 + h*3)) - ((11351/120960)*func(y2,t0 + h*2)) + ((275/24192)*func(y1,t0 + h*1)))
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = y5
+		y5 = y6
+		y6 = y7
+		y7 = yn
+		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
 	if flag==true:

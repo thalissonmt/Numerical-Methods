@@ -303,7 +303,7 @@ def interpretarEntrada(linha):
 
 		if dado[-1]=='2': 
 			y1 = float(dado[2])
-			adam_moulton(y0, y1, t0, h, passos, fn, true)
+			adam_moulton_2(y0, y1, t0, h, passos, fn, true)
 		elif dado[-1]=='3':
 			y1 = float(dado[2])
 			y2 = float(dado[3])
@@ -547,15 +547,176 @@ def interpretarEntrada(linha):
 			y6 = runge_kutta(y0, t0, h, 6, fn, false)
 			y7 = runge_kutta(y0, t0, h, 7, fn, false)
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
-	# elif dado[0]=="formula_inversa":
+
+	elif dado[0]=="formula_inversa":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Formula Inversa", t0, y0, h)
+
+		if dado[-1]=='2': 
+			y1 = float(dado[2])
+			formula_inversa_2(y0, y1, t0, h, passos, fn, true)
+		elif dado[-1]=='3':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			formula_inversa_3(y0, y1, y2, t0, h, passos, fn, true)
+		elif dado[-1]=='4':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			formula_inversa_4(y0, y1, y2, y3, t0, h, passos, fn, true)
+		elif dado[-1]=='5':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			formula_inversa_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)
+		elif dado[-1]=='6':
+			y1 = float(dado[2])
+			y2 = float(dado[3])
+			y3 = float(dado[4])
+			y4 = float(dado[5])
+			y5 = float(dado[6])
+			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)
+
+	elif dado[0]=="formula_inversa_by_euler":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Formula Inversa por Euler", t0, y0, h)
+
+		if dado[-1]=='2':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			formula_inversa_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			formula_inversa_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			formula_inversa_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			formula_inversa_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler(y0, t0, h, 1, fn, false)
+			y2 = euler(y0, t0, h, 2, fn, false)
+			y3 = euler(y0, t0, h, 3, fn, false)
+			y4 = euler(y0, t0, h, 4, fn, false)
+			y5 = euler(y0, t0, h, 5, fn, false)
+			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
 	
-	# elif dado[0]=="formula_inversa_by_euler":
+	elif dado[0]=="formula_inversa_by_euler_inverso":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Formula Inversa por Euler Inverso", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			formula_inversa_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			formula_inversa_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			formula_inversa_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			formula_inversa_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler_inverso(y0, t0, h, 1, fn, false)
+			y2 = euler_inverso(y0, t0, h, 2, fn, false)
+			y3 = euler_inverso(y0, t0, h, 3, fn, false)
+			y4 = euler_inverso(y0, t0, h, 4, fn, false)
+			y5 = euler_inverso(y0, t0, h, 5, fn, false)
+			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)
 	
-	# elif dado[0]=="formula_inversa_by_euler_inverso":
+	elif dado[0]=="formula_inversa_by_euler_aprimorado":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Formula Inversa por Euler Aprimorado", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			formula_inversa_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			formula_inversa_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			formula_inversa_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			formula_inversa_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = euler_aprimorado(y0, t0, h, 1, fn, false)
+			y2 = euler_aprimorado(y0, t0, h, 2, fn, false)
+			y3 = euler_aprimorado(y0, t0, h, 3, fn, false)
+			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
+			y5 = euler_aprimorado(y0, t0, h, 5, fn, false)
+			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
 	
-	# elif dado[0]=="formula_inversa_by_euler_aprimorado":
-	
-	# elif dado[0]=="formula_inversa_by_runge_kutta":
+	elif dado[0]=="formula_inversa_by_runge_kutta":
+		fn = dado[-2]
+		passos = int(dado[-3])
+		h = float(dado[-4])
+		t0 = float(dado[-5])
+		y0 = float(dado[1])
+		gerarSaida("Formula Inversa por Runge-Kutta", t0, y0, h)
+		
+		if dado[-1]=='2':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			formula_inversa_2(y0, y1, t0, h, passos, fn, true)	
+		elif dado[-1]=='3':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			formula_inversa_3(y0, y1, y2, t0, h, passos, fn, true)	
+		elif dado[-1]=='4':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			formula_inversa_4(y0, y1, y2, y3, t0, h, passos, fn, true)	
+		elif dado[-1]=='5':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			formula_inversa_5(y0, y1, y2, y3, y4, t0, h, passos, fn, true)	
+		elif dado[-1]=='6':
+			y1 = runge_kutta(y0, t0, h, 1, fn, false)
+			y2 = runge_kutta(y0, t0, h, 2, fn, false)
+			y3 = runge_kutta(y0, t0, h, 3, fn, false)
+			y4 = runge_kutta(y0, t0, h, 4, fn, false)
+			y5 = runge_kutta(y0, t0, h, 5, fn, false)
+			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
 
 def gerarSaida(nome, t0, y0, h):
 	arqSaida.write("Metodo de "+nome)
@@ -949,6 +1110,111 @@ def adam_moulton_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 		y5 = y6
 		y6 = y7
 		y7 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def formula_inversa_2(y0,y1,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(1, passos):
+		yn = ((2*h*func(adam_bashforth_2(y0,y1,t0,h,2,fn,false),t0 + h*2)) + (4*y1) - (1*y0))/3
+		y0 = y1
+		y1 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def formula_inversa_3(y0,y1,y2,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(2, passos):
+		yn = ((6*h*func(adam_bashforth_3(y0,y1,y2,t0,h,3,fn,false),t0 + h*3)) + (18*y2) - (9*y1) + (2*y0))/11
+		y0 = y1
+		y1 = y2
+		y2 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def formula_inversa_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(3, passos):
+		yn = ((12*h*func(adam_bashforth_4(y0,y1,y2,y3,t0,h,4,fn,false),t0 + h*4)) + (48*y3) - (36*y2) + (16*y1) - (3*y0))/25
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def formula_inversa_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(4, passos):
+		yn = ((60*h*func(adam_bashforth_5(y0,y1,y2,y3,y4,t0,h,5,fn,false),t0 + h*5)) + (300*y4) - (300*y3) + (200*y2) - (75*y1) + (12*y0))/137
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = yn
+		t0 += h
+		if flag==true:
+			adicionarSaida(count+1, yn)
+	if flag==true:
+		adicionarBarraN()
+	return yn
+
+def formula_inversa_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
+	if flag==true:
+		adicionarSaida(0,y0)
+		adicionarSaida(1,y1)
+		adicionarSaida(2,y2)
+		adicionarSaida(3,y3)
+		adicionarSaida(4,y4)
+		adicionarSaida(5,y5)
+	y, t = symbols("y t")
+	func = lambdify([y, t], fn)
+	for count in range(5, passos):
+		yn = ((60*h*func(adam_bashforth_6(y0,y1,y2,y3,y4,y5,t0,h,6,fn,false),t0 + h*6)) + (360*y5) - (450*y4) + (400*y3) - (225*y2) + (72*y1) - (10*y0))/147
+		y0 = y1
+		y1 = y2
+		y2 = y3
+		y3 = y4
+		y4 = y5
+		y5 = yn
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)

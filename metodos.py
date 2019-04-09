@@ -1,4 +1,7 @@
 from sympy import *
+import matplotlib.pyplot
+ys = []
+ts = []
 
 def receberEntrada():
 	arqEntrada = open('entrada.txt', 'r')
@@ -16,6 +19,14 @@ def interpretarEntrada(linha):
 		t0 = float(dado[2])
 		y0 = float(dado[1])
 		euler(y0, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Euler')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
+
 	elif dado[0]=="euler_inverso":
 		fn = dado[5]
 		passos = int(dado[4])
@@ -23,6 +34,14 @@ def interpretarEntrada(linha):
 		t0 = float(dado[2])
 		y0 = float(dado[1])
 		euler_inverso(y0, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Euler Inverso')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
+
 	elif dado[0]=="euler_aprimorado":
 		fn = dado[5]
 		passos = int(dado[4])
@@ -30,6 +49,14 @@ def interpretarEntrada(linha):
 		t0 = float(dado[2])
 		y0 = float(dado[1])
 		euler_aprimorado(y0, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Euler Aprimorado')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
+
 	elif dado[0]=="runge_kutta":
 		fn = dado[5]
 		passos = int(dado[4])
@@ -37,6 +64,13 @@ def interpretarEntrada(linha):
 		t0 = float(dado[2])
 		y0 = float(dado[1])
 		runge_kutta(y0, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Runge-Kutta')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="adam_bashforth":
 		fn = dado[-2]
@@ -88,6 +122,13 @@ def interpretarEntrada(linha):
 			y6 = float(dado[7])
 			y7 = float(dado[8])
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Adams Bashforth (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="adam_bashforth_by_euler":
 		fn = dado[-2]
@@ -139,6 +180,13 @@ def interpretarEntrada(linha):
 			y6 = euler(y0, t0, h, 6, fn, false)
 			y7 = euler(y0, t0, h, 7, fn, false)
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método de Adams Bashforth by Euler (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="adam_bashforth_by_euler_inverso":
 		fn = dado[-2]
@@ -190,6 +238,13 @@ def interpretarEntrada(linha):
 			y6 = euler_inverso(y0, t0, h, 6, fn, false)
 			y7 = euler_inverso(y0, t0, h, 7, fn, false)
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método de Adams Bashforth by Euler Inverso (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="adam_bashforth_by_euler_aprimorado":
 		fn = dado[-2]
@@ -241,6 +296,13 @@ def interpretarEntrada(linha):
 			y6 = euler_aprimorado(y0, t0, h, 6, fn, false)
 			y7 = euler_aprimorado(y0, t0, h, 7, fn, false)
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método de Adams Bashforth by Euler Aprimorado (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="adam_bashforth_by_runge_kutta":
 		fn = dado[-2]
@@ -292,6 +354,13 @@ def interpretarEntrada(linha):
 			y6 = runge_kutta(y0, t0, h, 6, fn, false)
 			y7 = runge_kutta(y0, t0, h, 7, fn, false)
 			adam_bashforth_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Adams Bashforth by Runge-Kutta (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="adam_multon":
 		fn = dado[-2]
@@ -343,6 +412,13 @@ def interpretarEntrada(linha):
 			y6 = float(dado[7])
 			y7 = float(dado[8])
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Adams Moulton (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="adam_multon_by_euler":
 		fn = dado[-2]
@@ -394,6 +470,13 @@ def interpretarEntrada(linha):
 			y6 = euler(y0, t0, h, 6, fn, false)
 			y7 = euler(y0, t0, h, 7, fn, false)
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Adams Moulton by Euler (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="adam_multon_by_euler_inverso":
 		fn = dado[-2]
@@ -445,6 +528,13 @@ def interpretarEntrada(linha):
 			y6 = euler_inverso(y0, t0, h, 6, fn, false)
 			y7 = euler_inverso(y0, t0, h, 7, fn, false)
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método de Adams Moulton by Euler Inverso (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="adam_multon_by_euler_aprimorado":
 		fn = dado[-2]
@@ -496,6 +586,13 @@ def interpretarEntrada(linha):
 			y6 = euler_aprimorado(y0, t0, h, 6, fn, false)
 			y7 = euler_aprimorado(y0, t0, h, 7, fn, false)
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método de Adams Moulton by Euler Aprimorado (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="adam_multon_by_runge_kutta":
 		fn = dado[-2]
@@ -547,6 +644,13 @@ def interpretarEntrada(linha):
 			y6 = runge_kutta(y0, t0, h, 6, fn, false)
 			y7 = runge_kutta(y0, t0, h, 7, fn, false)
 			adam_moulton_8(y0, y1, y2, y3, y4, y5, y6, y7, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método de Adams Moulton by Runge-Kutta (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="formula_inversa":
 		fn = dado[-2]
@@ -581,6 +685,13 @@ def interpretarEntrada(linha):
 			y4 = float(dado[5])
 			y5 = float(dado[6])
 			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método Fomula Inversa (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 	elif dado[0]=="formula_inversa_by_euler":
 		fn = dado[-2]
@@ -615,6 +726,13 @@ def interpretarEntrada(linha):
 			y4 = euler(y0, t0, h, 4, fn, false)
 			y5 = euler(y0, t0, h, 5, fn, false)
 			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método Fomula Inversa by Euler (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="formula_inversa_by_euler_inverso":
 		fn = dado[-2]
@@ -649,6 +767,13 @@ def interpretarEntrada(linha):
 			y4 = euler_inverso(y0, t0, h, 4, fn, false)
 			y5 = euler_inverso(y0, t0, h, 5, fn, false)
 			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)
+		matplotlib.pyplot.title('Método Fomula Inversa by Euler Inverso(ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="formula_inversa_by_euler_aprimorado":
 		fn = dado[-2]
@@ -683,6 +808,13 @@ def interpretarEntrada(linha):
 			y4 = euler_aprimorado(y0, t0, h, 4, fn, false)
 			y5 = euler_aprimorado(y0, t0, h, 5, fn, false)
 			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método Fomula Inversa by Euler Aprimorado (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 	
 	elif dado[0]=="formula_inversa_by_runge_kutta":
 		fn = dado[-2]
@@ -717,6 +849,13 @@ def interpretarEntrada(linha):
 			y4 = runge_kutta(y0, t0, h, 4, fn, false)
 			y5 = runge_kutta(y0, t0, h, 5, fn, false)
 			formula_inversa_6(y0, y1, y2, y3, y4, y5, t0, h, passos, fn, true)	
+		matplotlib.pyplot.title('Método Fomula Inversa by Runge-Kutta (ordem '+dado[-1]+')')
+		matplotlib.pyplot.xlabel('Valores de t')
+		matplotlib.pyplot.ylabel('Valores de y')
+		matplotlib.pyplot.plot(ts, ys)
+		matplotlib.pyplot.show()
+		ys.clear()
+		ts.clear()
 
 def gerarSaida(nome, t0, y0, h):
 	arqSaida.write("Metodo de "+nome)
@@ -740,12 +879,16 @@ def euler(y0,t0,h,passos,fn, flag):
 	if flag==true:
 		gerarSaida("Euler", t0, y0, h)
 		adicionarSaida(count, y0)
+		ys.append(y0)
+		ts.append(t0)
 	for count in range(passos):
 		yn = y0 + h*func(y0, t0)
 		y0 = yn
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn) 
+			ys.append(y0)
+			ts.append(t0)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -756,12 +899,16 @@ def euler_inverso(y0,t0,h,passos,fn, flag):
 	if flag==true:
 		gerarSaida("Euler Inverso", t0, y0, h)
 		adicionarSaida(0, y0)
+		ys.append(y0)
+		ts.append(t0)
 	for count in range(passos):
 		yn = y0 + h*func(euler(y0, t0, h, 1, fn, false), t0+h)
 		y0 = yn
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(y0)
+			ts.append(t0)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -772,12 +919,16 @@ def euler_aprimorado(y0,t0,h,passos,fn, flag):
 	if flag==true:
 		gerarSaida("Euler Aprimorado", t0, y0, h)
 		adicionarSaida(0, y0)
+		ys.append(y0)
+		ts.append(t0)
 	for count in range(passos):
 		yn = y0 + h*(func(euler(y0, t0, h, 1, fn, false), t0+h)+func(y0, t0))/2
 		y0 = yn
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(y0)
+			ts.append(t0)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -788,6 +939,8 @@ def runge_kutta(y0,t0,h,passos,fn,flag):
 	if flag==true:
 		gerarSaida("Runge-Kutta", t0, y0, h)
 		adicionarSaida(0, y0)
+		ys.append(y0)
+		ts.append(t0)
 	for count in range(passos):
 		k1 = func(y0, t0)
 		k2 = func(y0 + (k1*h/2.0), t0 + (h/2.0))
@@ -798,6 +951,8 @@ def runge_kutta(y0,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(y0)
+			ts.append(t0)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -806,6 +961,9 @@ def adam_bashforth_2(y0,y1,t0,h,passos,fn,flag):
 	if flag==true:
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
+		ys.extend((y0,y1))
+		for count in range(2):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(1, passos):
@@ -814,6 +972,8 @@ def adam_bashforth_2(y0,y1,t0,h,passos,fn,flag):
 		y1 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -823,6 +983,9 @@ def adam_bashforth_3(y0,y1,y2,t0,h,passos,fn,flag):
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
+		ys.extend((y0,y1,y2))
+		for count in range(3):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(2, passos):
@@ -832,6 +995,8 @@ def adam_bashforth_3(y0,y1,y2,t0,h,passos,fn,flag):
 		y2 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -842,6 +1007,9 @@ def adam_bashforth_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
+		ys.extend((y0,y1,y2,y3))
+		for count in range(4):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(3, passos):
@@ -852,6 +1020,8 @@ def adam_bashforth_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		y3 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -863,6 +1033,9 @@ def adam_bashforth_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
+		ys.extend((y0,y1,y2,y3,y4))
+		for count in range(5):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(4, passos):
@@ -874,6 +1047,8 @@ def adam_bashforth_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		y4 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -886,6 +1061,9 @@ def adam_bashforth_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
 		adicionarSaida(5,y5)
+		ys.extend((y0,y1,y2,y3,y4,y5))
+		for count in range(6):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(5, passos):
@@ -898,6 +1076,8 @@ def adam_bashforth_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		y5 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -911,6 +1091,9 @@ def adam_bashforth_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
 		adicionarSaida(4,y4)
 		adicionarSaida(5,y5)
 		adicionarSaida(6,y6)
+		ys.extend((y0,y1,y2,y3,y4,y5,y6))
+		for count in range(7):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(6, passos):
@@ -924,6 +1107,8 @@ def adam_bashforth_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
 		y6 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -938,6 +1123,9 @@ def adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 		adicionarSaida(5,y5)
 		adicionarSaida(6,y6)
 		adicionarSaida(7,y7)
+		ys.extend((y0,y1,y2,y3,y4,y5,y6,y7))
+		for count in range(8):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(7, passos):
@@ -952,6 +1140,8 @@ def adam_bashforth_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 		y7 = yn
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h*(count+1))
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -960,6 +1150,9 @@ def adam_moulton_2(y0,y1,t0,h,passos,fn,flag):
 	if flag==true:
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
+		ys.extend((y0,y1))
+		for count in range(2):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(1, passos):
@@ -969,6 +1162,8 @@ def adam_moulton_2(y0,y1,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -978,6 +1173,9 @@ def adam_moulton_3(y0,y1,y2,t0,h,passos,fn,flag):
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
+		ys.extend((y0,y1,y2))
+		for count in range(3):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(2, passos):
@@ -988,6 +1186,8 @@ def adam_moulton_3(y0,y1,y2,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 2*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -998,6 +1198,9 @@ def adam_moulton_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
+		ys.extend((y0,y1,y2,y3))
+		for count in range(4):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(3, passos):
@@ -1009,6 +1212,8 @@ def adam_moulton_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 3*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1020,6 +1225,9 @@ def adam_moulton_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
+		ys.extend((y0,y1,y2,y3,y4))
+		for count in range(5):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(4, passos):
@@ -1032,6 +1240,8 @@ def adam_moulton_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 4*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1044,6 +1254,9 @@ def adam_moulton_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
 		adicionarSaida(5,y5)
+		ys.extend((y0,y1,y2,y3,y4,y5))
+		for count in range(6):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(5, passos):
@@ -1057,6 +1270,8 @@ def adam_moulton_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 5*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1070,6 +1285,9 @@ def adam_moulton_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
 		adicionarSaida(4,y4)
 		adicionarSaida(5,y5)
 		adicionarSaida(6,y6)
+		ys.extend((y0,y1,y2,y3,y4,y5,y6))
+		for count in range(7):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(6, passos):
@@ -1084,6 +1302,8 @@ def adam_moulton_7(y0,y1,y2,y3,y4,y5,y6,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 6*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1098,6 +1318,9 @@ def adam_moulton_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 		adicionarSaida(5,y5)
 		adicionarSaida(6,y6)
 		adicionarSaida(7,y6)
+		ys.extend((y0,y1,y2,y3,y4,y5,y6,y7))
+		for count in range(8):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(7, passos):
@@ -1113,6 +1336,8 @@ def adam_moulton_8(y0,y1,y2,y3,y4,y5,y6,y7,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 7*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1121,6 +1346,9 @@ def formula_inversa_2(y0,y1,t0,h,passos,fn,flag):
 	if flag==true:
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
+		ys.extend((y0,y1))
+		for count in range(2):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(1, passos):
@@ -1130,6 +1358,8 @@ def formula_inversa_2(y0,y1,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1139,6 +1369,9 @@ def formula_inversa_3(y0,y1,y2,t0,h,passos,fn,flag):
 		adicionarSaida(0,y0)
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
+		ys.extend((y0,y1,y2))
+		for count in range(3):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(2, passos):
@@ -1149,6 +1382,8 @@ def formula_inversa_3(y0,y1,y2,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 2*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1159,6 +1394,9 @@ def formula_inversa_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		adicionarSaida(1,y1)
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
+		ys.extend((y0,y1,y2,y3))
+		for count in range(4):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(3, passos):
@@ -1170,6 +1408,8 @@ def formula_inversa_4(y0,y1,y2,y3,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 3*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1181,6 +1421,9 @@ def formula_inversa_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		adicionarSaida(2,y2)
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
+		ys.extend((y0,y1,y2,y3,y4))
+		for count in range(5):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(4, passos):
@@ -1193,6 +1436,8 @@ def formula_inversa_5(y0,y1,y2,y3,y4,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 4*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn
@@ -1205,6 +1450,9 @@ def formula_inversa_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		adicionarSaida(3,y3)
 		adicionarSaida(4,y4)
 		adicionarSaida(5,y5)
+		ys.extend((y0,y1,y2,y3,y4,y5))
+		for count in range(6):
+			ts.append(t0+(count*h))
 	y, t = symbols("y t")
 	func = lambdify([y, t], fn)
 	for count in range(5, passos):
@@ -1218,6 +1466,8 @@ def formula_inversa_6(y0,y1,y2,y3,y4,y5,t0,h,passos,fn,flag):
 		t0 += h
 		if flag==true:
 			adicionarSaida(count+1, yn)
+			ys.append(yn)
+			ts.append(t0 + 5*h)
 	if flag==true:
 		adicionarBarraN()
 	return yn

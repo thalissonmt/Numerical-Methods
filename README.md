@@ -2,7 +2,7 @@
 
 A simple algorithm to solve differential equations using numerical methods. Project of discipline IF816-CIN-2019.1
 
-###Types of Numerical Methods in this project:
+### Types of Numerical Methods in this project:
 - Euler
 - Backward Euler
 - Runge Kutta
